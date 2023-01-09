@@ -13,7 +13,6 @@
 <body class="bg-slate-200 overflow-x-hidden">
 <?php
 session_start();
-unset($_SESSION['u-u']);
 if(isset($_SESSION['admin'])){
 $head='ADMIN PANEL';
 $st = 'bg-slate-200 translate-x-14 text-slate-600 shadow-lg shadow-black';

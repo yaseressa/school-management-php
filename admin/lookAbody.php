@@ -9,7 +9,6 @@
 <div class="flex flex-col flex-wrap ml-20 ">
 <form action="" class="flex flex-row justify-start items-center w-[40%]" method='post'>
 <select value='CHOOSE A CLASS' class="bg-gradient-to-r to-slate-900 from-blue-900 shadow-lg shadow-gray-700 text-slate-200 rounded-bl-lg rounded-tl-lg w-96 h-10 p-3" name='classes'>
-<option value="">CHOOSE A CLASSROOM</option>
                   <?php
 
                     while($qt = mysqli_fetch_assoc($queryt)){ ?>
@@ -22,24 +21,12 @@
 
 </form>
 <form class='flex flex-row justify-start  mt-5 items-center w-[40%]' method="post">
-<input type="text" name="query" placeholder='Student ID' id="number" class=" shadow-lg shadow-gray-700 bg-gradient-to-r to-slate-900 from-blue-900 rounded-tl-lg rounded-bl-lg w-96 h-10 p-3  text-slate-200 border-3 border-black">
+<input type="date" name="date" placeholder='Student ID' id="number" class=" shadow-lg shadow-gray-700 bg-gradient-to-r to-slate-900 from-blue-900 rounded-tl-lg rounded-bl-lg w-96 h-10 p-3  text-slate-200 border-3 border-black">
 <input type="submit" name="submit" value="search" class="shadow-lg shadow-gray-700 bg-stone-900 p-3 translate-x-[-20%] rounded-lg flex justify-center items-center w-36 text-slate-200 text-sm add-Teacher">
 </form>
 </div>
-<div class="flex flex-col width-[30%]">
-<div class='   bg-stone-900 p-3 rounded-lg flex justify-center items-center w-[100%] text-slate-200 text-sm add-Teacher'><a href="./addClass.php">ADD CLASS</a></div><br>
-<div class='   bg-stone-900 p-3 rounded-lg flex justify-center items-center w-[100%] text-slate-200 text-sm add-Teacher'><a href="./addStudentClass.php">ADD STUDENT</a></div>
-</div>
-</div>
-<?php if(isset($_POST['submitc'])){?>
-    <div class="translate-y-12 mt-20 flex flex-row justify-between items-center">
-    <div   class="text-red-700 block ">
-                    <a href="delClassbody.php?cl=<?= $_POST['classes']?>" onclick="return confirm('do you want to delete this class and all its students?')"> <i class="fa fa-lg fa-trash-can "></i></a>
-                    </div> 
-    <h1 class="px-12 border-1 border-red-700 border-solid rounded-3xl" >CLASSROOM: <?= $_POST['classes']?></h1>
-    </div>
 
-<?php } ?>
+</div>
 <table class="bg-white border-2 border-solid border-black border-collapse shadow-gray-600 mt-16 ml-16 rounded-2xl bg-gradient-to-b from-slate-900 to-blue-900">
 
 <tr class=" text-stone-900">
@@ -55,6 +42,8 @@
         <th class=" bg-slate-200"></th>
     </tr>
     <?php
+
+    
         if(isset($_POST['submit']) && $_POST['query'] == '' || isset($_POST['submitc']) && $_POST['classes'] == ''){
 
             $query = 'select * from student';
@@ -78,6 +67,7 @@
                     $query = mysqli_query($conn, $q);
                 }
         }
+
 
     while($student_list = mysqli_fetch_assoc($query))
     {
@@ -107,12 +97,10 @@
                     </div> 
 
         </td>
-<?php } ?>
+<?php }} ?>
     </tr>
    
-    <?php 
 
-}?>
 
 </table>
 

@@ -1,4 +1,4 @@
-use sms
+create database sms;
 create table parent(
     parent_id int PRIMARY KEY,
     name varchar(45),

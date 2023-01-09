@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL ^ ~E_NOTICE);
 $query = "select * from parent where parent_id = '" . $_SESSION['user']['parent_id'] . "'" ;
 $query2 = "select * from classroom_student where student_id = '" . $_SESSION['user']['student_id'] . "'" ;
 $query2 = mysqli_fetch_assoc(mysqli_query($conn, $query2));
@@ -30,6 +31,7 @@ $grade = mysqli_fetch_assoc(mysqli_query($conn, $query4));
 
         </ul>
     </div>
+    <?php if($parent){?>
     <div>
     <h1 class="text-2xl  bg-stone-900 text-slate-200 p-3 w-[100%]">Parent Details</h1>
         <ul class="bg-slate-200  rounded-bl-xl rounded-br-xl border-2 border-slate-600 flex flex-col justify-center items-center">
@@ -39,6 +41,8 @@ $grade = mysqli_fetch_assoc(mysqli_query($conn, $query4));
 
         </ul>
     </div>
+    <?php } ?>
+    <?php if($grade){?>
     <div>
     <h1 class="text-2xl  bg-stone-900 text-slate-200 p-3 w-[100%]">School Details</h1>
     <ul class="bg-slate-200  rounded-bl-xl rounded-br-xl border-2 border-slate-600 flex flex-col justify-center items-center">
@@ -48,5 +52,6 @@ $grade = mysqli_fetch_assoc(mysqli_query($conn, $query4));
 
         </ul>
     </div>
+    <?php }?>
 </div>
 </div>

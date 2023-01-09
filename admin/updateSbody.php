@@ -10,13 +10,10 @@ $attr = array('ID',
 'DOJ'
 );
 $parent = array('pname', 'pemail', 'pphone');
-session_start();
 if(isset($_GET['st'])){
     include '../db/connection.php';
     $student = mysqli_fetch_assoc(mysqli_query($conn,"select * from student where student_id = '" . $_GET['st'] . "'"));
     $parent_t = mysqli_fetch_assoc(mysqli_query($conn,"select * from parent where parent_id = '" . $_GET['st'] . "'"));
-}else{
-    header_remove('Location');
 }
 ?>
 <div class=" flex flex-col items-center justify-center translate-y-28 translate-x-80  w-[80%] overflow-x-hidden h-[100%]">

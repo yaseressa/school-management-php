@@ -13,13 +13,14 @@
 <body class="bg-slate-200 overflow-x-hidden">
 <?php
 session_start();
+unset($_SESSION['u-u']);
 if(isset($_SESSION['admin'])){
 $head='ADMIN PANEL';
-$attend = 'bg-slate-200 translate-x-20 text-slate-600 shadow-lg shadow-black';
+$attend = 'bg-slate-200 translate-x-14 text-slate-600 shadow-lg shadow-black';
 include '../db/connection.php';
 include './layout/headers.php';
 include './layout/sideBar.php';
-include './attendDbody.php';
+include './lookAbody.php';
 }else{
     echo "<script>continue('log-in first')</script>";
     header('Location: login.php');

@@ -15,11 +15,11 @@
 session_start();
 if(isset($_SESSION['admin'])){
 $head='ADMIN PANEL';
-$attend = 'bg-slate-200 translate-x-20 text-slate-600 shadow-lg shadow-black';
+$exam = 'bg-slate-200 translate-x-14 text-slate-600 shadow-lg shadow-black';
 include '../db/connection.php';
 include './layout/headers.php';
 include './layout/sideBar.php';
-include './attendDbody.php';
+include './addEbody.php';
 }else{
     echo "<script>continue('log-in first')</script>";
     header('Location: login.php');

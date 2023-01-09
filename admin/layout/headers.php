@@ -1,4 +1,4 @@
-<div class="z-20 w-[100%] fixed h-[70px] bg-slate-200 text-slate-600 m-auto">
+<div class="z-20 w-[100%] fixed h-[70px] bg-transparent text-slate-600 m-auto">
    <div class=" pt-3 mx-16 ml-10 flex justify-between items-center">
    <div class="flex justify-evenly bg-slate-600 items-center p-3 h-10 rounded-2xl">
         <img src="../resource/admin-av.png" width="50" alt="" class=" bg-slate-500 p-2 rounded-full">

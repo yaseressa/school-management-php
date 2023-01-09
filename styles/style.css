@@ -7,6 +7,12 @@
     font-family: 'Rubik', sans-serif;
 
 }
+body{
+background-image: url('../resource/bg.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+
+}
 .image{
     filter: drop-shadow(10px 10px 0px white);
 }
@@ -38,4 +44,8 @@
         transform: none;
 
     }
+}
+.del{
+    color: rgb(177, 8, 8);
+    border: 1px solid rgb(177, 8, 8);
 }

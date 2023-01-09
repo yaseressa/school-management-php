@@ -1,9 +1,7 @@
     <div class="">
     <div class="fixed top-[70px] left-0 h-screen w-[18%] m-0 bg-stone-900  text-slate-200 z-20 shadow-inner shadow-black">
     <div class="w-[100%] relative top-8 flex flex-col justify-center items-center">
-        <img src="./resource/std_av.png" width="100" alt="" class=" bg-slate-200 rounded-full">
-        <h1 class="  text-slate-200 m-4 uppercase"><?= $_SESSION['user']['name'] ?></h1>
-
+        <h1 class="text-xl border-b-2 "><?= $head ?> </h1>
         <ul class="mt-8">
             <li  class="mt-5 p-4 rounded-tl-md rounded-bl-md  <?= $profile ?>">
             <a href='./studentDash.php' class="  flex flex-row justify-start items-center">
