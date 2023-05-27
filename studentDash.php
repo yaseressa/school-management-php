@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,22 +11,24 @@
     <title>Student Dashboard</title>
 
 </head>
+
 <body class="bg-slate-200">
-<?php
-session_start();
-if(isset($_SESSION['user'])){
-$head='STUDENT PANEL';
-$profile = 'bg-slate-200 translate-x-14 text-slate-600 shadow-lg shadow-black';
-$spinp = 'fa-spin';
-$exam = '';
-include './db/connection.php';
-include './layout/headers.php';
-include './layout/sideBar.php';
-include './studentDbody.php';
-}else{
-    echo "<script>continue('log-in first')</script>";
-    header('Location: login.php');
-}
-?>
+    <?php
+    session_start();
+    if (isset($_SESSION['user'])) {
+        $head = 'STUDENT PANEL';
+        $profile = 'bg-slate-200 translate-x-6 flex justify-end items-center text-slate-600 shadow-lg shadow-black p-4';
+        $spinp = 'fa-spin';
+        $exam = '';
+        include './db/connection.php';
+        include './layout/headers.php';
+        include './layout/sideBar.php';
+        include './studentDbody.php';
+    } else {
+        echo "<script>continue('log-in first')</script>";
+        header('Location: login.php');
+    }
+    ?>
 </body>
+
 </html>

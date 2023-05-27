@@ -1,5 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['admin'])) {
+    $head = 'ADMIN PANEL';
+    $attend = 'bg-slate-200 translate-x-6 flex justify-end items-center text-slate-600 shadow-lg shadow-black p-4';
+    include '../db/connection.php';
+    include './layout/headers.php';
+    include './layout/sideBar.php';
+    include './attendDbody.php';
+} else {
+    echo "<script>continue('log-in first')</script>";
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,20 +25,9 @@
     <title>Admin Dashboard</title>
 
 </head>
+
 <body class="bg-slate-200 overflow-x-hidden">
-<?php
-session_start();
-if(isset($_SESSION['admin'])){
-$head='ADMIN PANEL';
-$attend = 'bg-slate-200 translate-x-20 text-slate-600 shadow-lg shadow-black';
-include '../db/connection.php';
-include './layout/headers.php';
-include './layout/sideBar.php';
-include './attendDbody.php';
-}else{
-    echo "<script>continue('log-in first')</script>";
-    header('Location: login.php');
-}
-?>
+
 </body>
+
 </html>
