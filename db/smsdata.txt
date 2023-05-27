@@ -1,4 +1,4 @@
-create database sms;
+use sms;
 create table parent(
     parent_id int PRIMARY KEY,
     name varchar(45),
@@ -16,7 +16,7 @@ create table student(
     phone varchar(25),
     date_of_join varchar(20),
     parent_id int,
-    FOREIGN KEY parent_id REFERENCES parent(parent_id)
+    FOREIGN KEY (parent_id) REFERENCES parent(parent_id)
     
 );
 
@@ -43,17 +43,17 @@ create table subject(
     grade_id int,
     description varchar(200),
     teacher_id int,
-    FOREIGN KEY grade_id REFERENCES grade(grade_id),
-    FOREIGN KEY teacher_id REFERENCES teacher(teacher_id) 
+    FOREIGN KEY (grade_id) REFERENCES grade(grade_id),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id) 
 );
 create table result(
     exam_id int,
     student_id int not null,
     subject_id int not null,
     marks int,
-    FOREIGN KEY subject_id REFERENCES subject(subject_id),
-    FOREIGN KEY student_id REFERENCES student(student_id),
-    FOREIGN KEY exam_id REFERENCES exam(exam_id)
+    FOREIGN KEY (subject_id) REFERENCES subject(subject_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id),
+    FOREIGN KEY (exam_id) REFERENCES exam(exam_id)
 );
 
 create table classroom(
@@ -61,20 +61,20 @@ create table classroom(
     grade_id int NOT null,
     section varchar(2),
     status boolean,
-    FOREIGN KEY grade_id REFERENCES grade(grade_id)
+    FOREIGN KEY (grade_id) REFERENCES grade(grade_id)
 
 );
 
 create table classroom_student(
 	classroom_id int not null,
     student_id int not null,
-    FOREIGN KEY classroom_id REFERENCES classroom(classroom_id),
-    FOREIGN KEY student_id REFERENCES student(student_id) 
+    FOREIGN KEY (classroom_id) REFERENCES classroom(classroom_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id) 
 );
 
 CREATE TABLE attendence(
 	date date PRIMARY KEY,
     student_id int not null,
     status boolean,
-    FOREIGN KEY student_id REFERENCES student(student_id)
+    FOREIGN KEY (student_id) REFERENCES student(student_id)
 );
