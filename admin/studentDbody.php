@@ -55,7 +55,7 @@ include '../db/connection.php';
 
                         <a href="./updateStudent.php?st=<?= $student_list['student_id'] ?>"><i class="fa fa-lg fa-exchange "></i> </a>
                     </div>
-                    <div class="text-red-700 block h-6 p-3 m-3">
+                    <div class="text-red-700 block h-6 p-3 m-3" onclick="confirm('Do You Want to Delete The Student?')">
                         <a href="delStudent.php?st=<?= $student_list['student_id'] ?>"> <i class="fa fa-lg fa-trash-can "></i></a>
                     </div>
 

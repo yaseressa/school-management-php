@@ -4,12 +4,12 @@ $queryt = mysqli_query($conn, 'select * from classroom left join grade using(gra
 ?>
 <script src="./scripts/students.js"></script>
 <div class=" flex flex-col items-center justify-center translate-y-32 translate-x-[20%]  w-[80%] overflow-x-hidden">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center w-full">
 
-        <div class="flex flex-col flex-wrap ml-20 ">
-            <form action="" class="flex flex-row justify-start items-center w-[40%]" method='post'>
-                <select value='CHOOSE A CLASS' class="bg-gradient-to-r to-slate-900 from-blue-900 shadow-lg shadow-gray-700 text-slate-200 rounded-bl-lg rounded-tl-lg w-96 h-10 p-3" name='classes'>
-                    <option value="">CHOOSE A CLASSROOM</option>
+        <div class="flex flex-col flex-wrap ml-20 w-full">
+            <form action="" class="flex flex-row whitespace-nowrap justify-start items-center w-[70%]" method='post'>
+                <select value='CHOOSE A CLASS' class="bg-gradient-to-r to-slate-900 from-blue-900 shadow-lg shadow-gray-700 text-slate-200 rounded-bl-lg rounded-tl-lg w-[100%] h-11 p-3" name='classes'>
+                    <option value="" class="text-gray-600">CHOOSE A CLASSROOM</option>
                     <?php
 
                     while ($qt = mysqli_fetch_assoc($queryt)) { ?>
@@ -18,17 +18,17 @@ $queryt = mysqli_query($conn, 'select * from classroom left join grade using(gra
 
                 </select>
                 </select>
-                <input type="submit" name="submitc" value="search" class="shadow-lg shadow-gray-700 bg-stone-900 p-3 rounded-br-lg  rounded-tr-lg flex justify-center items-center w-36 text-slate-200 text-sm add-Teacher">
+                <input type="submit" name="submitc" value="search" class="shadow-lg shadow-gray-700 bg-stone-900 p-3 rounded-br-lg  rounded-tr-lg flex justify-center items-center w-[25%] text-slate-200 text-sm add-Teacher">
 
             </form>
-            <form class='flex flex-row justify-start  mt-5 items-center w-[40%]' method="post">
-                <input type="text" name="query" placeholder='Student ID' id="number" class=" shadow-lg shadow-gray-700 bg-gradient-to-r to-slate-900 from-blue-900 rounded-tl-lg rounded-bl-lg w-96 h-10 p-3  text-slate-200 border-3 border-black">
-                <input type="submit" name="submit" value="search" class="shadow-lg shadow-gray-700 bg-stone-900 p-3 translate-x-[-20%] rounded-lg flex justify-center items-center w-36 text-slate-200 text-sm add-Teacher">
+            <form class='flex flex-row whitespace-nowrap justify-start mt-5 items-center w-[70%]' method="post">
+                <input type="text" name="query" placeholder='Student ID' id="number" class=" bg-gradient-to-r to-slate-900 from-blue-900 shadow-lg shadow-gray-700 text-slate-200 rounded-bl-lg rounded-tl-lg w-[100%] h-11 p-3">
+                <input type="submit" name="submit" value="search" class="shadow-lg shadow-gray-700 bg-stone-900 p-3 rounded-br-lg  rounded-tr-lg flex justify-center items-center w-[25%] text-slate-200 text-sm add-Teacher">
             </form>
         </div>
-        <div class="flex flex-col width-[30%]">
-            <div class='   bg-stone-900 p-3 rounded-lg flex justify-center items-center w-[100%] text-slate-200 text-sm add-Teacher'><a href="./addClass.php">ADD CLASS</a></div><br>
-            <div class='   bg-stone-900 p-3 rounded-lg flex justify-center items-center w-[100%] text-slate-200 text-sm add-Teacher'><a href="./addStudentClass.php">ADD STUDENT</a></div>
+        <div class="flex flex-col width-[40%]">
+            <div class='   bg-stone-900 p-4 rounded-lg flex justify-center items-center  text-slate-200 text-sm add-Teacher w-full whitespace-nowrap'><a href="./addClass.php">ADD &nbsp;CLASS</a></div><br>
+            <div class='   bg-stone-900 p-4 rounded-lg flex justify-center items-center  text-slate-200 text-sm add-Teacher w-full whitespace-nowrap'><a href="./addStudentClass.php">ADD &nbsp;STUDENT</a></div>
         </div>
     </div>
     <?php if (isset($_POST['submitc'])) { ?>
@@ -71,7 +71,7 @@ $queryt = mysqli_query($conn, 'select * from classroom left join grade using(gra
                 $q = "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "'";
                 $query = mysqli_query($conn, $q);
             } else {
-                $q = "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "', student_id = '" . $_POST['query'] . "';";
+                $q = "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "' AND student_id = '" . $_POST['query'] . "'";
                 $query = mysqli_query($conn, $q);
             }
         }
@@ -80,17 +80,17 @@ $queryt = mysqli_query($conn, 'select * from classroom left join grade using(gra
 
 
         ?>
-            <tr class="border-collapse">
+            <tr class="border-collapse p-10 text-stone-900 w-[100%] ">
 
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['student_id'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['name'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['email'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200"><?= $student_list['password'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200 text-xs"><?= $student_list['dob'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200"><?= $student_list['sex'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['Address'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200"><?= $student_list['phone'] ?></td>
-                <td class=" border-2 px-2 py-0 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['date_of_join'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['student_id'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['name'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['email'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200"><?= $student_list['password'] ?></td>
+                <td class=" border-2 px-4 p-4  border-solid border-gray-100 text-slate-200 text-xs"><?= $student_list['dob'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200"><?= $student_list['sex'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['Address'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200"><?= $student_list['phone'] ?></td>
+                <td class=" border-2 px-4 p-4 border-solid border-gray-100 text-slate-200 text-sm"><?= $student_list['date_of_join'] ?></td>
                 <?php if (isset($student_list['classroom_id'])) { ?>
                     <td class="p-4 bg-slate-200">
 

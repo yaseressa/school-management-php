@@ -1,4 +1,2 @@
-<?php 
-            $conn = mysqli_connect('localhost:3333','uni', 'phpmysql', 'sms') or die('NO ANSWER FROM THE BACK.');
-
-?>
+<?php
+$conn = mysqli_connect('localhost:3304', 'root', 'localhost', 'sms') or die('NO ANSWER FROM THE BACK.');

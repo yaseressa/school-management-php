@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
             </form>
 
         </div>
-        <img src="../resource/admin.png" alt="" class=" image top-16 relative w-[40%] animate-f">
+        <img src="../resource/admin.png" alt="" class=" image top-16 relative w-[50%] animate-f">
     </div>
 
 </body>

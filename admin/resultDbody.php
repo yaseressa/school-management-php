@@ -5,7 +5,7 @@ include '../db/connection.php';
 <div class=" flex flex-col items-center justify-center translate-y-32 translate-x-[20%]  w-[80%] overflow-x-hidden">
     <div class="flex justify-between items-center ">
         <form class='m-4 flex flex-row justify-start items-center w-[100%] ml-10' method="post">
-            <input type="text" name="query" placeholder='Student ID' id="number" class=" shadow-lg shadow-gray-700 bg-gradient-to-r to-slate-900 from-blue-900 rounded-tl-lg rounded-bl-lg w-96 h-10 p-7  text-slate-200 border-3 border-black">
+            <input type="number" name="query" placeholder='Student ID' id="number" class=" shadow-lg shadow-gray-700 bg-gradient-to-r to-slate-900 from-blue-900 rounded-tl-lg rounded-bl-lg w-96 h-10 p-7  text-slate-200 border-3 border-black">
             <input type="submit" name="submit" value="search" class="shadow-lg shadow-gray-700 bg-stone-900 p-5 rounded-br-lg translate-x-[-20%] rounded-tr-lg flex justify-center items-center w-36 text-slate-200 text-sm add-Teacher">
         </form>
         <div class='   bg-stone-900 p-3 rounded-lg flex justify-center items-center w-[30%] text-slate-200 text-sm add-Teacher'><a href="./addRes.php">ADD RESULT</a></div>
@@ -13,8 +13,9 @@ include '../db/connection.php';
     </div>
     <table class="bg-white border-2 border-solid border-black border-collapse shadow-gray-600 mt-16 rounded-2xl bg-gradient-to-b from-slate-900 to-blue-900">
         <tr class=" text-stone-900">
-            <th class="p-4 px-10 bg-stone-900 text-white">EXAM</th>
+            <th class="p-4 px-10 bg-stone-900 text-white">STUDENT ID</th>
             <th class="p-4 px-10 bg-stone-900 text-white">STUDENT</th>
+            <th class="p-4 px-10 bg-stone-900 text-white">EXAM</th>
             <th class="p-4 px-10 bg-stone-900 text-white">SUBJECT</th>
             <th class="p-4 px-10 bg-stone-900 text-white">MARKS</th>
 
@@ -33,6 +34,7 @@ include '../db/connection.php';
 
         ?>
             <tr class="p-10 text-stone-900 w-[100%] border-collapse">
+                <td class="p-4 px-10 border-2 border-solid border-gray-100 text-slate-200 text-sm"><?= $result_list['student_id'] ?></td>
                 <td class="p-4 px-10 border-2 border-solid border-gray-100 text-slate-200 text-sm"><?= $result_list['student'] ?></td>
                 <td class="p-4 px-10 border-2 border-solid border-gray-100 text-slate-200 text-sm"><?= $result_list['exam'] ?></td>
                 <td class="p-4 px-10 border-2 border-solid border-gray-100 text-slate-200"><?= $result_list['subject'] ?></td>

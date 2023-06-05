@@ -1,3 +1,4 @@
+create database sms;
 use sms;
 create table parent(
     parent_id int PRIMARY KEY,
@@ -75,6 +76,6 @@ create table classroom_student(
 CREATE TABLE attendence(
 	date date PRIMARY KEY,
     student_id int not null,
-    status boolean,
+    status varchar(3) not null,
     FOREIGN KEY (student_id) REFERENCES student(student_id)
 );

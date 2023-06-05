@@ -1,4 +1,7 @@
 <?php
+include '../db/connection.php';
+
+
 $attr = array(
     'ID',
     'NAME',
@@ -11,12 +14,36 @@ $attr = array(
     'DOJ'
 );
 $parent = array('pname', 'pemail', 'pphone');
+if (isset($_POST['submit'])) {
+    $q =   "insert into parent values ('"
+        . $_POST[$attr[0]] . "', '"
+        . $_POST[$parent[0]] . "', '"
+        . $_POST[$parent[1]] . "', '"
+        . $_POST[$parent[2]] . "'); ";
+
+    $q2 = "insert into student values ('"
+        . $_POST[$attr[0]] . "', '"
+        . $_POST[$attr[1]] . "', '"
+        . $_POST[$attr[2]] . "', '"
+        . $_POST[$attr[3]] . "', '"
+        . $_POST[$attr[4]] . "', '"
+        . $_POST[$attr[5]] . "', '"
+        . $_POST[$attr[6]] . "', '"
+        . $_POST[$attr[7]] . "', '"
+        . $_POST[$attr[8]] . "', '"
+        . $_POST[$attr[0]] . "')";
+    mysqli_query($conn, $q);
+    mysqli_query($conn, $q2);
+    echo "<script>window.location.replace('http://localhost/SMS/admin/studentDash.php');</script>";
+}
 ?>
-<div class="overflow-y-visible translate-y-28 translate-x-80  w-[80%] overflow-x-hidden">
-    <div class='flex flex-col justify-center items-center z-20 m-10'><img src="../resource/std_av.png" width="130" alt="" class="bg-stone-900 rounded-full  z-10">
-        <h1>New Student</h1>
+<dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
+    <div class=' top-16 right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/studentDash.php');">DISCARD</div>
+    <div class='flex flex-col justify-center items-center  m-4'>
+        <img src="../resource/std_av.png" width="130" alt="" class="bg-stone-900 rounded-2xl  z-10">
+        <h1 class="mt-4">New Student</h1>
     </div>
-    <form action="" method="post" class=" w-[100%]   flex flex-col justify-center items-center z-10">
+    <form method="post" class=" w-[100%]  h-screen flex flex-col flex-wrap justify-center items-center ">
         <table class="bg-white border-2 border-solid border-black border-collapse shadow-gray-600 rounded-2xl">
             <tr>
                 <th class="p-3 px-24 text-sm bg-stone-900 text-white"><?= $attr[0] ?></th>
@@ -42,6 +69,8 @@ $parent = array('pname', 'pemail', 'pphone');
                 <th class="p-3 px-24 text-sm bg-stone-900 text-white"><?= $attr[5] ?></th>
                 <td class="p-3 px-24 border-2 border-solid border-stone-900"><input required class="h-12 w-[100%]" type="text" name='<?= $attr[5] ?>'></td>
             </tr>
+        </table>
+        <table class="bg-white border-2 border-solid border-black border-collapse shadow-gray-600 rounded-2xl">
             <tr>
                 <th class="p-3 px-24 text-sm bg-stone-900 text-white"><?= $attr[6] ?></th>
                 <td class="p-3 px-24 border-2 border-solid border-stone-900"><input required class="h-12 w-[100%]" type="text" name='<?= $attr[6] ?>'></td>
@@ -55,47 +84,19 @@ $parent = array('pname', 'pemail', 'pphone');
                 <td class="p-3 px-24 border-2 border-solid border-stone-900"><input type="date" class="h-12 w-[100%]" name='<?= $attr[8] ?>'></td>
             </tr>
             <tr>
-                <th class="p-3 px-24 text-sm bg-stone-900 text-white"><?= $parent[0] ?></th>
-                <td class="p-3 px-24 border-2 border-solid border-stone-900"><input required type="text" class="h-12 w-[100%]" name='<?= $parent[0] ?>'></td>
+                <th class="p-3 px-24 text-sm bg-stone-900 text-white">Parent Name</th>
+                <td class="p-3 px-24 border-2 border-solid border-stone-900"><input required type="text" class="h-12 w-[100%]" name="<?= $parent[0] ?>"></td>
             </tr>
             <tr>
-                <th class="p-3 px-24 text-sm bg-stone-900 text-white"><?= $parent[1] ?></th>
-                <td class="p-3 px-24 border-2 border-solid border-stone-900"><input required type="email" class="h-12 w-[100%]" name='<?= $parent[1] ?>'></td>
+                <th class="p-3 px-24 text-sm bg-stone-900 text-white">Parent Email</th>
+                <td class="p-3 px-24 border-2 border-solid border-stone-900"><input required type="email" class="h-12 w-[100%]" name="<?= $parent[1] ?>"></td>
             </tr>
             <tr>
-                <th class="p-3 px-24 text-sm bg-stone-900 text-white"><?= $parent[2] ?></th>
-                <td class="p-3 px-24 border-2 border-solid border-stone-900"><input type="tel" class="h-12 w-[100%]" name='<?= $parent[2] ?>'></td>
+                <th class="p-3 px-24 text-sm bg-stone-900 text-white">Parent Phone</th>
+                <td class="p-3 px-24 border-2 border-solid border-stone-900"><input type="tel" class="h-12 w-[100%]" name="<?= $parent[2] ?>"></td>
             </tr>
-
-
-
         </table>
-        <div class=' mt-6 bg-stone-900 p-3 rounded-lg flex justify-center items-center w-36 text-slate-200 text-sm'><input name='submit' type="submit" value="ADD STUDENT"></div>
+        <div class=' top-16 right-52 absolute bg-stone-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm'><input name='submit' type="submit" value="ADD STUDENT"></div>
+
     </form>
-</div>
-
-<?php
-include '../db/connection.php';
-if (isset($_POST['submit'])) {
-    $q =   "insert into parent values ('"
-        . $_POST[$attr[0]] . "', '"
-        . $_POST['pname'] . "', '"
-        . $_POST['pphone'] . "', '"
-        . $_POST['pemail'] . "'); ";
-    $q2 = "insert into student values ('"
-        . $_POST[$attr[0]] . "', '"
-        . $_POST[$attr[1]] . "', '"
-        . $_POST[$attr[2]] . "', '"
-        . $_POST[$attr[3]] . "', '"
-        . $_POST[$attr[4]] . "', '"
-        . $_POST[$attr[5]] . "', '"
-        . $_POST[$attr[6]] . "', '"
-        . $_POST[$attr[7]] . "', '"
-        . $_POST[$attr[8]] . "', '"
-        . $_POST[$attr[0]] . "')";
-    mysqli_query($conn, $q);
-    mysqli_query($conn, $q2);
-    header_remove('Location');
-}
-
-?>
+</dialog>
