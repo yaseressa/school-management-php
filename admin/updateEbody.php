@@ -21,7 +21,7 @@ if (isset($_GET['ex'])) {
 ?>
 
 <dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
-    <div class=' top-16 right-12 absolute whitespace-nowrap bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/examDash.php');">DISCARD CHANGES</div>
+    <div class=' top-16 right-12 absolute whitespace-nowrap bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace(' /examDash.php');">DISCARD CHANGES</div>
 
     <div class='flex flex-col justify-center items-center z-20 m-10'><img src="../resource/exam-av.png" width="130" alt="" class="bg-blue-900 rounded-2xl  z-10">
         <h1><?= $ex['name'] ?></h1>
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
         . $_POST[$attr[2]] . "', type = '"
         . $_POST["TY"] . "' where exam_id = '" . $ex['exam_id'] . "';";
     mysqli_query($conn, $q2);
-    echo "<script>window.location.replace('http://localhost/SMS/admin/examDash.php');</script>";
+    echo "<script>window.location.replace(' /examDash.php');</script>";
 }
 
 ?>

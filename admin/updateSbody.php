@@ -1,3 +1,6 @@
+<style>
+
+</style>
 <?php
 $attr = array(
     'ID',
@@ -16,11 +19,66 @@ $parent = array('pname', 'pemail', 'pphone');
 if (isset($_GET['st'])) {
     include '../db/connection.php';
     $student = mysqli_fetch_assoc(mysqli_query($conn, "select * from student where student_id = '" . $_GET['st'] . "'"));
+    $class = mysqli_fetch_assoc(mysqli_query($conn, "select * from classroom_student left join classroom using(classroom_id) where student_id = '" . $_GET['st'] . "'"));
+
     $parent_t = mysqli_fetch_assoc(mysqli_query($conn, "select * from parent where parent_id = '" . $_GET['st'] . "'"));
 }
 ?>
-<dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
-    <div class=' top-16 right-12 absolute whitespace-nowrap bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/studentDash.php');">DISCARD CHANGES</div>
+<dialog id="id" class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
+    <div class=' top-1 right-12 absolute whitespace-nowrap bg-stone-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.print()">Generate</div>
+
+    <div class="bg-white w-[700px] rounded-2xl">
+        <div class="flex justify-between items-center px-6">
+            <div class=""><img width="50" src="../resource/logo.png" alt=""></div>
+            <h1 class="text-center text-2xl">School Name</h1>
+            <div class=""><img width="50" src="../resource/logo.png" alt=""></div>
+
+        </div>
+        <hr class="border-2 border-stone-900">
+        <div class=" flex h-[250px] w-[100%] justify-evenly pt-8">
+            <div class="w-[150px] h-[150px]"><img width="150" src="../resource/std_av.png" alt=""></div>
+            <div class="flex flex-col justify-start flex-wrap items-center w-[500px] gap-x-6">
+
+                <div>
+
+                    <div class=" w-[150px] rounded-sm  text-black ">
+                        ID:
+                    </div>
+                    <p class="pt-2 pb-5 text-left pl-3 font-mono text-sm"><?= $student['student_id'] ?></p>
+                </div>
+                <div>
+                    <div class=" w-[150px] rounded-sm  text-black ">
+                        Name:
+                    </div>
+                    <p class="pt-2 pb-5 text-left pl-3 font-mono text-sm"><?= $student['name'] ?></p>
+                </div>
+                <div>
+                    <div class=" w-[150px] rounded-sm  text-black ">
+                        Parent Name:
+                    </div>
+                    <p class="pt-2 pb-5 text-left pl-3 font-mono text-sm"><?= $parent_t['name'] ?></p>
+                </div>
+                <div>
+                    <div class=" w-[150px] rounded-sm  text-black">
+                        Date of Join:
+                    </div>
+                    <p class="pt-2 pb-5 text-left pl-3 font-mono text-sm"><?= $student['date_of_join'] ?></p>
+
+                </div>
+                <div>
+                    <div class=" w-[150px] rounded-sm  text-black">
+                        Grade
+                    </div>
+                    <p class="pt-2 pb-5 text-left pl-3 font-mono text-sm"><?= $class['grade_id'] ?></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</dialog>
+<dialog open id="up" class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
+    <div class=' top-16 right-12 absolute whitespace-nowrap bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace(' /studentDash.php');">DISCARD CHANGES</div>
+    <div class=' top-1 right-12 absolute whitespace-nowrap bg-stone-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="document.getElementById('id').showModal()">ID card</div>
     <div class='flex flex-col justify-center items-center z-20 m-4'>
         <img src="../resource/std_av.png" width="130" alt="" class="bg-stone-900 rounded-2xl  z-10">
         <h1 class="mt-4"><?= $student['name'] ?></h1>
@@ -102,7 +160,7 @@ if (isset($_POST['submit'])) {
         . $_POST[$attr[0]] . "' where student_id = '" . $_POST[$attr[0]] . "'";;
     mysqli_query($conn, $q);
     mysqli_query($conn, $q2);
-    echo "<script>window.location.replace('http://localhost/SMS/admin/studentDash.php');</script>";
+    echo "<script>window.location.replace(' /studentDash.php');</script>";
 }
 
 ?>

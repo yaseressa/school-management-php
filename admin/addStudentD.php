@@ -34,11 +34,11 @@ if (isset($_POST['submit'])) {
         . $_POST[$attr[0]] . "')";
     mysqli_query($conn, $q);
     mysqli_query($conn, $q2);
-    echo "<script>window.location.replace('http://localhost/SMS/admin/studentDash.php');</script>";
+    echo "<script>window.location.replace(' /studentDash.php');</script>";
 }
 ?>
 <dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
-    <div class=' top-16 right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/studentDash.php');">DISCARD</div>
+    <div class=' top-16 right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace(' /studentDash.php');">DISCARD</div>
     <div class='flex flex-col justify-center items-center  m-4'>
         <img src="../resource/std_av.png" width="130" alt="" class="bg-stone-900 rounded-2xl  z-10">
         <h1 class="mt-4">New Student</h1>

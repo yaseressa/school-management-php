@@ -74,8 +74,9 @@ create table classroom_student(
 );
 
 CREATE TABLE attendence(
-	date date PRIMARY KEY,
+    date date,
     student_id int not null,
     status varchar(3) not null,
+    PRIMARY KEY(date, student_id)
     FOREIGN KEY (student_id) REFERENCES student(student_id)
 );

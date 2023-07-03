@@ -56,10 +56,13 @@ $queryt = mysqli_query($conn, 'select * from classroom left join grade using(gra
             } elseif (isset($_POST['submitc']) && $_POST['classes']) {
                 $q = "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "'";
                 $query = mysqli_query($conn, $q);
-                $g = mysqli_fetch_assoc(mysqli_query($conn, "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "'"))['student_id'];
-                $d = mysqli_fetch_assoc(mysqli_query($conn, "select * from attendence where date = '" . date('Y-m-d') . "' AND student_id = " . $g . ";"));
-                if ($d) {
-                    echo "<script>window.location.replace('http://localhost/SMS/admin/takeDash.php');alert('Already Taken for today')</script>";
+                $g = mysqli_fetch_assoc(mysqli_query($conn, "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "'"));
+                if ($g != null) {
+                    $d = mysqli_fetch_assoc(mysqli_query($conn, "select * from attendence where date = '" . date('Y-m-d') . "' AND student_id = " . $g['student_id'] . ";"));
+
+                    if ($d) {
+                        echo "<script>window.location.replace(' /takeDash.php');alert('Already Taken for today')</script>";
+                    }
                 }
             } else {
                 $q = "select * from classroom_student join student using(student_id) where classroom_id ='" . $_POST['classes'] . "', student_id = '" . $_POST['query'] . "';";

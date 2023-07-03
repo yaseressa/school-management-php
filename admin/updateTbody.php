@@ -14,7 +14,7 @@ if (isset($_GET['tc'])) {
 ?>
 
 <dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
-    <div class=' top-16 whitespace-nowrap right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/teachDash.php');">DISCARD CHANGE</div>
+    <div class=' top-16 whitespace-nowrap right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace(' /teachDash.php');">DISCARD CHANGE</div>
 
     <div class='flex flex-col justify-center items-center z-20 m-10'><img src="../resource/teacher-av.png" width="130" alt="" class="bg-stone-900 rounded-2xl  z-10">
         <h1><?= $teacher['name'] ?></h1>

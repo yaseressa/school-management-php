@@ -14,7 +14,7 @@ if (isset($_GET['su'])) {
 ?>
 
 <dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
-    <div class=' top-16 right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/subjectDash.php');">DISCARD</div>
+    <div class=' top-16 right-12 absolute bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace(' /subjectDash.php');">DISCARD</div>
     <div class='flex flex-col justify-center items-center z-20 m-10'><img src="../resource/subject-av.png" width="130" alt="" class="bg-orange-700 rounded-full  z-10">
         <h1><?= $subject['name'] ?></h1>
     </div>
@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
         . $_POST['grade'] . "', teacher_id = '"
         . $_POST['teacher'] . "' where subject_id =" . $_POST[$attr[0]];
     mysqli_query($conn, $q2);
-    echo "<script>window.location.replace('http://localhost/SMS/admin/subjectDash.php');</script>";
+    echo "<script>window.location.replace(' /subjectDash.php');</script>";
 }
 
 ?>

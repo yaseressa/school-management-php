@@ -15,7 +15,7 @@ if ($_GET['res'] && $_GET['st'] && $_GET['ex']) {
 ?>
 
 <dialog open class="overflow-y-visible z-20 w-[100%] overflow-x-hidden flex flex-col justify-center items-center bg-white bg-opacity-30 backdrop-blur-sm h-screen">
-    <div class=' top-16 right-12 absolute whitespace-nowrap bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace('http://localhost/SMS/admin/resultDash.php');">DISCARD CHANGES</div>
+    <div class=' top-16 right-12 absolute whitespace-nowrap bg-red-900 p-3 rounded-lg flex justify-center items-center w-36 cursor-pointer text-slate-200 text-sm' onclick="window.location.replace(' /resultDash.php');">DISCARD CHANGES</div>
     <div class='flex flex-col justify-center items-center z-20 m-10'><img src="../resource/result-av.png" width="130" alt="" class="bg-green-800 rounded-2xl  z-10">
         <h1>New Result</h1>
     </div>
@@ -55,7 +55,7 @@ if ($_GET['res'] && $_GET['st'] && $_GET['ex']) {
         $q2 = "update result set marks = '"
             . $_POST[$attr[3]] . "' where student_id = '" . $_POST["SID"] . "' AND subject_id = '" . $_POST["SUBID"] . "' AND exam_id = '" . $_POST["EID"] . "';";
         mysqli_query($conn, $q2);
-        echo "<script>window.location.replace('http://localhost/SMS/admin/resultDash.php');</script>";
+        echo "<script>window.location.replace(' /resultDash.php');</script>";
     }
 
     ?>
