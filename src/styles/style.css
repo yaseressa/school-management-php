@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+* {
+  font-family: "Rubik", sans-serif;
+}
+body {
+  background-image: url("../resource/bg.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+}
+.image {
+  filter: drop-shadow(10px 10px 0px white);
+}
+.animate-appear {
+  animation: appear 0.1s 1;
+}
+.animate-f {
+  animation: float 4s infinite;
+}
+@keyframes appear {
+  0% {
+    transform: translateY(25%);
+    transform: scale(75%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  100% {
+    transform: none;
+    transform: scale(100%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-3%);
+  }
+  50% {
+    transform: none;
+  }
+}
+.del {
+  color: rgb(177, 8, 8);
+  border: 1px solid rgb(177, 8, 8);
+}
